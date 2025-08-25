@@ -1,0 +1,13 @@
+.env
+.env.production
+node_modules
+dist
+coverage
+.DS_Storetemp-gh-pages/
+.vercel
+.DS_Store
+.DS_Store?
+._*
+.vscode
+.vscode/*
+.env*.local

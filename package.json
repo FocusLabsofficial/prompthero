@@ -1,0 +1,32 @@
+{
+  "name": "codeprompt-hub",
+  "version": "1.0.0",
+  "description": "A platform for sharing and discovering effective coding prompts",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "dev:vercel": "vercel dev",
+    "build": "echo 'Build complete'",
+    "start": "node server.js",
+    "test": "echo 'No tests specified'",
+    "db:init": "/opt/homebrew/opt/postgresql@14/bin/psql $DATABASE_URL -f api/schema.sql",
+    "agent:security-auditor": "security-auditor 'Security audit covering codebase, dependencies, and deployment configuration'"
+  },
+  "dependencies": {
+    "@vercel/postgres": "^0.10.0",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.0.0"
+  },
+  "keywords": [
+    "coding-prompts",
+    "ai-coding",
+    "programming-prompts",
+    "developer-tools",
+    "prompt-sharing",
+    "coding-community"
+  ],
+  "author": "CodePrompt Hub Community",
+  "license": "MIT"
+}
