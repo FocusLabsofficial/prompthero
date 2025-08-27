@@ -1,7 +1,7 @@
 {
-  "name": "codeprompt-hub",
+  "name": "prompthero",
   "version": "1.0.0",
-  "description": "A platform for sharing and discovering effective coding prompts",
+  "description": "PromptHero - A platform for sharing and discovering effective coding prompts",
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
@@ -27,6 +27,6 @@
     "prompt-sharing",
     "coding-community"
   ],
-  "author": "CodePrompt Hub Community",
+  "author": "PromptHero Community",
   "license": "MIT"
 }

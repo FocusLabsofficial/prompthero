@@ -1258,101 +1258,103 @@ function handlePromptSubmission(event) {
         tags: document.getElementById('promptTags') ? document.getElementById('promptTags').value.split(',').map(tag => tag.trim()) : [document.getElementById('promptCategory').value, document.getElementById('promptLanguage').value]
     };
     
-    // Show GitHub submission dialog
-    showGitHubSubmissionDialog(promptData);
+    // Validate required fields
+    if (!promptData.title || !promptData.text) {
+        showToast('Please fill in all required fields (Title and Prompt Text)', 'error');
+        return;
+    }
     
-    // Close the original modal
-    closeSubmitModal();
+    // Show loading state
+    const submitBtn = event.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
+    
+    // Submit directly to API
+    submitPromptDirectly(promptData, submitBtn, originalText);
 }
 
-function showGitHubSubmissionDialog(promptData) {
-    const modal = document.createElement('div');
-    modal.className = 'github-submission-modal';
-    modal.innerHTML = `
-        <div class="github-modal-overlay">
-            <div class="github-modal">
-                <div class="github-modal-header">
-                    <h3>🚀 Submit to GitHub</h3>
-                    <button class="close-github-modal" onclick="closeGitHubModal()">&times;</button>
-                </div>
-                <div class="github-modal-content">
-                    <div class="github-icon">
-                        <svg width="32" height="32" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-                        </svg>
-                    </div>
-                    <h4>Contribute to the Community</h4>
-                    <p>To submit your prompt, please create a GitHub issue with your contribution.</p>
-                    
-                    <div class="prompt-preview">
-                        <h5>Your Prompt Preview:</h5>
-                        <div class="preview-card">
-                            <strong>Title:</strong> ${promptData.title}<br>
-                            <strong>Category:</strong> ${promptData.category}<br>
-                            <strong>Language:</strong> ${promptData.language}<br>
-                            <strong>Description:</strong> ${promptData.description}<br>
-                            <strong>Tags:</strong> ${promptData.tags.join(', ')}<br>
-                            <div class="prompt-text-preview">${promptData.text}</div>
-                        </div>
-                    </div>
-                    
-                    <div class="github-actions">
-                        <button onclick="copyPromptForGitHub('${encodeURIComponent(JSON.stringify(promptData))}')" class="btn-github-copy">
-                            📋 Copy Prompt Data
-                        </button>
-                        <a href="https://github.com/davila7/claude-code-templates/issues/new?title=New%20Prompt:%20${encodeURIComponent(promptData.title)}" 
-                           target="_blank" class="btn-github-submit">
-                            🐙 Submit on GitHub
-                        </a>
-                    </div>
-                    
-                    <div class="github-note">
-                        <p><strong>Note:</strong> This will open GitHub in a new tab. Please paste the copied prompt data in the issue description.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(modal);
-    document.body.style.overflow = 'hidden';
-}
 
-window.closeGitHubModal = function() {
-    const modal = document.querySelector('.github-submission-modal');
-    if (modal) {
-        modal.remove();
-        document.body.style.overflow = 'auto';
+
+async function submitPromptDirectly(promptData, submitBtn, originalText) {
+    try {
+        // Determine API endpoint based on environment
+        const apiUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:3000/api/prompts'
+            : '/api/prompts';
+        
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title: promptData.title,
+                description: promptData.description,
+                prompt_text: promptData.text,
+                category_slug: promptData.category,
+                language: promptData.language,
+                tags: promptData.tags
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        
+        // Show success message
+        showToast('Prompt submitted successfully! It will be reviewed and added to the collection.', 'success');
+        
+        // Close modal and reset form
+        closeSubmitModal();
+        document.getElementById('promptSubmissionForm').reset();
+        
+        // Optionally refresh the prompts list
+        setTimeout(() => {
+            loadPrompts();
+        }, 1000);
+        
+    } catch (error) {
+        console.error('Error submitting prompt:', error);
+        showToast('Failed to submit prompt. Please try again later.', 'error');
+    } finally {
+        // Reset button state
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
     }
 }
 
-window.copyPromptForGitHub = function(encodedData) {
-    const promptData = JSON.parse(decodeURIComponent(encodedData));
-    const githubFormat = `## Prompt Submission
 
-**Title:** ${promptData.title}
-**Category:** ${promptData.category}
-**Language:** ${promptData.language}
-**Tags:** ${promptData.tags.join(', ')}
 
-### Description
-${promptData.description}
 
-### Prompt Text
-\`\`\`
-${promptData.text}
-\`\`\`
 
-### Additional Notes
-Please review and add this prompt to the collection.
-`;
+// Toast notification function
+function showToast(message, type = 'info') {
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.textContent = message;
     
-    navigator.clipboard.writeText(githubFormat).then(() => {
-        showNotification('Prompt data copied to clipboard! 📋', 'success');
-    }).catch(() => {
-        showNotification('Failed to copy. Please manually copy the text.', 'error');
-    });
+    document.body.appendChild(toast);
+    
+    // Trigger animation
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 100);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            if (toast.parentNode) {
+                toast.parentNode.removeChild(toast);
+            }
+        }, 300);
+    }, 3000);
 }
+
+
 
 // Additional utility functions
 function showTopRated() {
@@ -1430,4 +1432,60 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Initialize theme on page load
+    initializeTheme();
 });
+
+// Theme Management
+function initializeTheme() {
+    // Check for saved theme preference or default to light theme
+    const savedTheme = localStorage.getItem('prompthero-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    setTheme(theme);
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+}
+
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('prompthero-theme', theme);
+    
+    // Update meta theme-color for mobile browsers
+    updateMetaThemeColor(theme);
+    
+    // Show toast notification for theme change
+    if (typeof showToast === 'function') {
+        const message = theme === 'dark' ? '🌙 Dark mode enabled' : '☀️ Light mode enabled';
+        showToast(message, 'info');
+    }
+}
+
+function updateMetaThemeColor(theme) {
+    let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (!metaThemeColor) {
+        metaThemeColor = document.createElement('meta');
+        metaThemeColor.name = 'theme-color';
+        document.head.appendChild(metaThemeColor);
+    }
+    
+    const color = theme === 'dark' ? '#0d1117' : '#ffffff';
+    metaThemeColor.content = color;
+}
+
+// Listen for system theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    // Only auto-switch if user hasn't manually set a preference
+    if (!localStorage.getItem('prompthero-theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+    }
+});
+
+// Make toggleTheme globally available
+window.toggleTheme = toggleTheme;

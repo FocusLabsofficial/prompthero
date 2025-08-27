@@ -1,6 +1,30 @@
-/* Terminal theme CSS based on Claude Code Analytics dashboard */
+/* PromptHero - Responsive Theme System */
 :root {
-    /* Dark theme colors (terminal style) */
+    /* Light Theme (default) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --border-primary: #dee2e6;
+    --border-secondary: #e9ecef;
+    --border-color: #dee2e6;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --text-accent: #007bff;
+    --text-success: #28a745;
+    --text-warning: #ffc107;
+    --text-error: #dc3545;
+    --text-info: #17a2b8;
+    --accent-color: #007bff;
+    --shadow-primary: rgba(0, 0, 0, 0.1);
+    --shadow-secondary: rgba(0, 0, 0, 0.05);
+    --code-bg: #f8f9fa;
+    --header-bg: #ffffff;
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
     --bg-primary: #0d1117;
     --bg-secondary: #161b22;
     --bg-tertiary: #21262d;
@@ -9,14 +33,18 @@
     --border-color: #30363d;
     --text-primary: #c9d1d9;
     --text-secondary: #7d8590;
-    --text-accent: #d57455;
-    --text-success: #3fb950;
-    --text-warning: #f97316;
+    --text-accent: #58a6ff;
+    --text-success: #238636;
+    --text-warning: #d29922;
     --text-error: #f85149;
-    --text-info: #a5d6ff;
-    --accent-color: #d97706;
+    --text-info: #79c0ff;
+    --accent-color: #58a6ff;
     --shadow-primary: rgba(0, 0, 0, 0.4);
     --shadow-secondary: rgba(1, 4, 9, 0.85);
+    --code-bg: #161b22;
+    --header-bg: #0d1117;
+    --card-bg: #161b22;
+    --input-bg: #21262d;
 }
 
 /* Reset and base styles */

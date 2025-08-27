@@ -1,4 +1,4 @@
-// CodePrompt Hub - Prompts API
+// PromptHero - Prompts API
 const { getPrompts, createPrompt, getCategories } = require('../database/db');
 
 export default async function handler(req, res) {

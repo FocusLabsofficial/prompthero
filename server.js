@@ -1,4 +1,4 @@
-// Simple development server for CodePrompt Hub
+// Simple development server for PromptHero
 const http = require('http');
 const fs = require('fs');
 const path = require('path');

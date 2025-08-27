@@ -1,4 +1,4 @@
-// CodePrompt Hub - Database Utilities
+// PromptHero - Database Utilities
 // PostgreSQL connection and common queries
 
 const { Pool } = require('pg');
