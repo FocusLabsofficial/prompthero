@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptHero - Share & Discover Effective Coding Prompts</title>
+    <meta name="description" content="Discover, share, and collaborate on effective coding prompts. Find the perfect prompt for your programming task, submit your own, and help the community code better with AI assistance.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://davila7.github.io/claude-code-templates/">
+    <meta property="og:title" content="PromptHero - Share & Discover Effective Coding Prompts">
+    <meta property="og:description" content="Discover, share, and collaborate on effective coding prompts. Find the perfect prompt for your programming task, submit your own, and help the community code better with AI assistance.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/davila7/claude-code-templates/main/social-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="PromptHero - Share & Discover Effective Coding Prompts">
+    <meta property="og:site_name" content="PromptHero">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://davila7.github.io/claude-code-templates/">
+    <meta property="twitter:title" content="PromptHero - Share & Discover Effective Coding Prompts">
+    <meta property="twitter:description" content="Discover, share, and collaborate on effective coding prompts. Find the perfect prompt for your programming task and help the community code better.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/davila7/claude-code-templates/main/social-preview.png">
+    <meta property="twitter:image:alt" content="PromptHero - Share & Discover Effective Coding Prompts">
+    <meta property="twitter:creator" content="@davila7">
+    <meta property="twitter:site" content="@davila7"
+    
+    <!-- Additional SEO -->
+    <meta name="keywords" content="coding prompts, AI coding, programming prompts, developer prompts, code generation, AI assistance, programming help, software development, coding community, prompt sharing, AI programming, code examples, developer tools, programming resources">
+    <meta name="author" content="PromptHero Community">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://davila7.github.io/claude-code-templates/">
+    
+    <!-- Product information -->
+    <meta name="product" content="PromptHero">
+    <meta name="platform" content="Web Platform">
+    <meta name="category" content="Developer Tools">
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <script src="https://cdn.counter.dev/script.js" data-id="1f599060-4af4-4cbc-a809-a158768ab768" data-utcoffset="-4"></script>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PromptHero",
+      "applicationCategory": "DeveloperApplication",
+      "description": "Discover, share, and collaborate on effective coding prompts. Find the perfect prompt for your programming task, submit your own, and help the community code better with AI assistance.",
+      "url": "https://davila7.github.io/claude-code-templates/",
+      "author": {
+        "@type": "Organization",
+        "name": "PromptHero Community"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "keywords": "coding prompts, AI coding, programming prompts, developer prompts, code generation, AI assistance, programming help, software development, coding community, prompt sharing"
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="terminal-header">
+            <div class="ascii-title">
+                <pre class="ascii-art">██████╗ ██████╗  ██████╗ ███╗   ███╗██████╗ ████████╗    ██╗  ██╗███████╗██████╗  ██████╗ 
+██╔══██╗██╔══██╗██╔═══██╗████╗ ████║██╔══██╗╚══██╔══╝    ██║  ██║██╔════╝██╔══██╗██╔═══██╗
+██████╔╝██████╔╝██║   ██║██╔████╔██║██████╔╝   ██║       ███████║█████╗  ██████╔╝██║   ██║
+██╔═══╝ ██╔══██╗██║   ██║██║╚██╔╝██║██╔═══╝    ██║       ██╔══██║██╔══╝  ██╔══██╗██║   ██║
+██║     ██║  ██║╚██████╔╝██║ ╚═╝ ██║██║        ██║       ██║  ██║███████╗██║  ██║╚██████╔╝
+╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═╝        ╚═╝       ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝</pre>
+            </div>
+            <div class="terminal-subtitle">
+                <span class="status-dot"></span>
+                Discover, share, and collaborate on <strong>effective coding prompts</strong>
+            </div>
+        </div>
+                <div class="header-actions">
+                    <button class="header-btn submit-btn" onclick="openSubmitModal()" title="Submit a new coding prompt">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+                        </svg>
+                        Submit Prompt
+                    </button>
+                    <button class="header-btn" onclick="scrollToCategories()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10,4H14V2H10V4M4,10V14H6V10H4M6,8V6H4V8H6M10,20V22H14V20H10M20,10V14H22V10H20M18,8V6H16V8H18M18,16V18H20V16H18M8,20V18H6V20H8M12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12Z"/>
+                        </svg>
+                        Categories
+                    </button>
+                    <button class="header-btn theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">
+                        <svg class="theme-icon sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z"/>
+                        </svg>
+                        <svg class="theme-icon moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.4 6.35,17.41C9.37,20.43 14,20.54 17.33,17.97Z"/>
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="terminal">
+
+        
+        <section class="steps-section">
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Discover Prompts</h3>
+                        <p>Browse prompts by category, language, or use case</p>
+                        <div class="step-highlight">
+                            <span class="highlight-text">🔍 Search through hundreds of effective coding prompts</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Copy & Use</h3>
+                        <p>Click to copy prompts and use with any AI assistant</p>
+                        <div class="step-highlight">
+                            <span class="highlight-text">📋 One-click copy to your clipboard</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Share & Rate</h3>
+                        <p>Submit your own prompts and rate others</p>
+                        <div class="step-highlight">
+                            <span class="highlight-text">⭐ Help the community find the best prompts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="unified-filter-section">
+            <!-- Search Section Header -->
+            <div class="search-header">
+                <div class="terminal-command">
+                    <div class="header-content">
+                        <h2 class="search-title"><span class="terminal-dot"></span><strong>Search </strong><span class="title-params">(prompts/categories/languages)</span></h2>
+                        <p class="search-subtitle">⎿ Find the perfect prompt for your coding task</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terminal Search Input - Main Component -->
+            <div class="terminal-search-container">
+                <div class="terminal-search-wrapper" onclick="focusSearchInput()">
+                    <span class="terminal-prompt">></span>
+                    <input type="text" id="searchInput" class="terminal-search-input" placeholder="Search prompts..." oninput="handleSearchInput(event)" onkeydown="handleSearchKeydown(event)">
+                    <svg class="search-icon-end" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15.5,14H14.71L14.43,13.73C15.41,12.59 16,11.11 16,9.5C16,5.91 13.09,3 9.5,3C5.91,3 3,5.91 3,9.5C3,13.09 5.91,16 9.5,16C11.11,16 12.59,15.41 13.73,14.43L14,14.71V15.5L19,20.49L20.49,19L15.5,14M9.5,14C7.01,14 5,11.99 5,9.5C5,7.01 7.01,5 9.5,5C11.99,5 14,7.01 14,9.5C14,11.99 11.99,14 9.5,14Z"/>
+                    </svg>
+                    <button class="terminal-clear-btn" id="clearSearchBtn" onclick="clearSearch()" style="display: none;" title="Clear search">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Search results info and tags -->
+                <div class="search-results-info" id="searchResultsInfo" style="display: none;">
+                    <div class="terminal-results">
+                        <span class="terminal-dot"></span>
+                        <div class="results-content">
+                            <div class="results-count" id="resultsCount">Found(0 results)</div>
+                            <div class="search-filters">⎿ <span class="search-filter-tags" id="searchFilterTags"></span></div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Compact Prompt Type Filters -->
+            <div class="component-type-filters">
+                <div class="filter-group">
+                    <span class="filter-group-label">category:</span>
+                    <div class="filter-chips">
+                        <button class="filter-chip active" data-filter="all" onclick="setUnifiedFilter('all')">
+                            <span class="chip-icon">🔍</span>all
+                        </button>
+                        <button class="filter-chip special" data-filter="bookmarked" onclick="setUnifiedFilter('bookmarked')">
+                            <span class="chip-icon">⭐</span>bookmarked
+                        </button>
+                        <button class="filter-chip special" data-filter="popular" onclick="setUnifiedFilter('popular')">
+                            <span class="chip-icon">🔥</span>popular
+                        </button>
+                        <button class="filter-chip" data-filter="debugging" onclick="setUnifiedFilter('debugging')">
+                            <span class="chip-icon">🐛</span>debugging
+                        </button>
+                        <button class="filter-chip" data-filter="testing" onclick="setUnifiedFilter('testing')">
+                            <span class="chip-icon">🧪</span>testing
+                        </button>
+                        <button class="filter-chip" data-filter="optimization" onclick="setUnifiedFilter('optimization')">
+                            <span class="chip-icon">⚡</span>optimization
+                        </button>
+                        <button class="filter-chip" data-filter="refactoring" onclick="setUnifiedFilter('refactoring')">
+                            <span class="chip-icon">🔧</span>refactoring
+                        </button>
+                        <button class="filter-chip" data-filter="documentation" onclick="setUnifiedFilter('documentation')">
+                            <span class="chip-icon">📚</span>docs
+                        </button>
+                        <button class="filter-chip" data-filter="security" onclick="setUnifiedFilter('security')">
+                            <span class="chip-icon">🔒</span>security
+                        </button>
+                        <button class="filter-chip" data-filter="frontend" onclick="setUnifiedFilter('frontend')">
+                            <span class="chip-icon">🎨</span>frontend
+                        </button>
+                        <button class="filter-chip" data-filter="devops" onclick="setUnifiedFilter('devops')">
+                            <span class="chip-icon">🚀</span>devops
+                        </button>
+                        <button class="filter-chip" data-filter="backend" onclick="setUnifiedFilter('backend')">
+                            <span class="chip-icon">⚙️</span>backend
+                        </button>
+                        <button class="filter-chip" data-filter="mobile" onclick="setUnifiedFilter('mobile')">
+                            <span class="chip-icon">📱</span>mobile
+                        </button>
+                        <button class="filter-chip" data-filter="ai-ml" onclick="setUnifiedFilter('ai-ml')">
+                            <span class="chip-icon">🤖</span>ai-ml
+                        </button>
+                        <button class="filter-chip" data-filter="database" onclick="setUnifiedFilter('database')">
+                            <span class="chip-icon">🗄️</span>database
+                        </button>
+                        <button class="filter-chip" data-filter="api" onclick="setUnifiedFilter('api')">
+                            <span class="chip-icon">🔌</span>api
+                        </button>
+                        <button class="filter-chip" data-filter="cloud" onclick="setUnifiedFilter('cloud')">
+                            <span class="chip-icon">☁️</span>cloud
+                        </button>
+                        <button class="filter-chip" data-filter="blockchain" onclick="setUnifiedFilter('blockchain')">
+                            <span class="chip-icon">⛓️</span>blockchain
+                        </button>
+                        <button class="filter-chip" data-filter="game-dev" onclick="setUnifiedFilter('game-dev')">
+                            <span class="chip-icon">🎮</span>game-dev
+                        </button>
+                        <button class="filter-chip" data-filter="data-viz" onclick="setUnifiedFilter('data-viz')">
+                            <span class="chip-icon">📊</span>data-viz
+                        </button>
+                        <button class="filter-chip" data-filter="automation" onclick="setUnifiedFilter('automation')">
+                            <span class="chip-icon">🤖</span>automation
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Component Categories (will be populated dynamically) -->
+            <div class="component-categories" id="componentCategories" style="display: none;">
+                <div class="category-group">
+                    <span class="category-group-label">category:</span>
+                    <div class="category-chips" id="categoryChips">
+                        <!-- Categories will be populated by JavaScript based on selected type -->
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="content-grid" id="contentGrid">
+            <!-- Loading indicator -->
+            <div class="loading-indicator" id="prompts-loading" style="display: none;">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">
+                    <h3>Loading Prompts...</h3>
+                    <p>Fetching the latest coding prompts from the community</p>
+                    <div class="loading-progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content container -->
+            <div class="unified-grid" id="unifiedGrid">
+                <!-- All prompts will be loaded here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Featured Prompt Categories -->
+        <section class="featured-categories" style="display: block;">
+            <div class="command-block">
+                <div class="command-label">$ Popular Prompt Categories</div>
+                <div class="command-description">Curated collections of prompts for common coding tasks</div>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card" onclick="setUnifiedFilter('debugging')">
+                    <div class="category-icon">🐛</div>
+                    <h3>Debugging</h3>
+                    <p>Fix React, Python, SQL, and API issues</p>
+                    <div class="category-count">4 prompts</div>
+                        </div>
+                <div class="category-card" onclick="setUnifiedFilter('testing')">
+                    <div class="category-icon">🧪</div>
+                    <h3>Testing</h3>
+                    <p>Unit, e2e, load testing & automation</p>
+                    <div class="category-count">5 prompts</div>
+                        </div>
+                <div class="category-card" onclick="setUnifiedFilter('optimization')">
+                    <div class="category-icon">⚡</div>
+                    <h3>Performance</h3>
+                    <p>React, database & frontend optimization</p>
+                    <div class="category-count">4 prompts</div>
+                        </div>
+                <div class="category-card" onclick="setUnifiedFilter('refactoring')">
+                    <div class="category-icon">🔧</div>
+                    <h3>Refactoring</h3>
+                    <p>Clean code, microservices & modernization</p>
+                    <div class="category-count">3 prompts</div>
+                        </div>
+                <div class="category-card" onclick="setUnifiedFilter('documentation')">
+                    <div class="category-icon">📚</div>
+                    <h3>Documentation</h3>
+                    <p>APIs, technical specs & project docs</p>
+                    <div class="category-count">3 prompts</div>
+                        </div>
+                <div class="category-card" onclick="setUnifiedFilter('security')">
+                    <div class="category-icon">🔒</div>
+                    <h3>Security</h3>
+                    <p>Security audits & authentication systems</p>
+                    <div class="category-count">3 prompts</div>
+                        </div>
+                <div class="category-card" onclick="setUnifiedFilter('frontend')">
+                    <div class="category-icon">🎨</div>
+                    <h3>Frontend</h3>
+                    <p>UI libraries, PWAs & accessibility</p>
+                    <div class="category-count">4 prompts</div>
+                        </div>
+                <div class="category-card" onclick="setUnifiedFilter('devops')">
+                    <div class="category-icon">🚀</div>
+                    <h3>DevOps</h3>
+                    <p>Kubernetes, CI/CD & cloud deployment</p>
+                    <div class="category-count">3 prompts</div>
+                </div>
+                
+                <div class="category-card" onclick="setUnifiedFilter('backend')">
+                    <div class="category-icon">⚙️</div>
+                    <h3>Backend</h3>
+                    <p>API development, databases & server architecture</p>
+                    <div class="category-count">5 prompts</div>
+                </div>
+                
+                <div class="category-card" onclick="setUnifiedFilter('mobile')">
+                    <div class="category-icon">📱</div>
+                    <h3>Mobile</h3>
+                    <p>React Native, Flutter & native app development</p>
+                    <div class="category-count">4 prompts</div>
+                </div>
+                
+                <div class="category-card" onclick="setUnifiedFilter('ai-ml')">
+                    <div class="category-icon">🤖</div>
+                    <h3>AI & ML</h3>
+                    <p>Machine learning, data science & AI integration</p>
+                    <div class="category-count">6 prompts</div>
+                </div>
+                
+                <div class="category-card" onclick="setUnifiedFilter('database')">
+                    <div class="category-icon">🗄️</div>
+                    <h3>Database</h3>
+                    <p>SQL, NoSQL, migrations & data modeling</p>
+                    <div class="category-count">4 prompts</div>
+                </div>
+                
+                <div class="category-card" onclick="setUnifiedFilter('api')">
+                    <div class="category-icon">🔌</div>
+                    <h3>API Design</h3>
+                    <p>REST, GraphQL & API best practices</p>
+                    <div class="category-count">5 prompts</div>
+                </div>
+                
+                <div class="category-card" onclick="setUnifiedFilter('cloud')">
+                    <div class="category-icon">☁️</div>
+                    <h3>Cloud</h3>
+                    <p>AWS, Azure, GCP & serverless architecture</p>
+                    <div class="category-count">4 prompts</div>
+                </div>
+                
+                <div class="category-card" onclick="setUnifiedFilter('blockchain')">
+                    <div class="category-icon">⛓️</div>
+                    <h3>Blockchain</h3>
+                    <p>Smart contracts, Web3 & decentralized apps</p>
+                    <div class="category-count">3 prompts</div>
+                </div>
+                
+                <div class="category-card" onclick="setUnifiedFilter('game-dev')">
+                    <div class="category-icon">🎮</div>
+                    <h3>Game Development</h3>
+                    <p>Unity, Unreal Engine & game mechanics</p>
+                    <div class="category-count">3 prompts</div>
+                </div>
+                
+                <div class="category-card" onclick="setUnifiedFilter('data-viz')">
+                    <div class="category-icon">📊</div>
+                    <h3>Data Visualization</h3>
+                    <p>Charts, dashboards & interactive graphics</p>
+                    <div class="category-count">4 prompts</div>
+                </div>
+                
+                <div class="category-card" onclick="setUnifiedFilter('automation')">
+                    <div class="category-icon">🤖</div>
+                    <h3>Automation</h3>
+                    <p>Scripts, bots & workflow automation</p>
+                    <div class="category-count">5 prompts</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="additional-tools">
+            <div class="command-block">
+                <div class="command-label">$ Community Features</div>
+                <div class="command-description">Join the community to share knowledge and improve coding prompts</div>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">✍️</div>
+                    <h3>Submit Prompts</h3>
+                    <p>Share your effective coding prompts with the community. Help others discover better ways to communicate with AI assistants.</p>
+                    <div class="command-line">
+                        <button class="action-btn" onclick="openSubmitModal()">
+                            <span class="btn-icon">+</span>
+                            Submit New Prompt
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">⭐</div>
+                    <h3>Rate & Review</h3>
+                    <p>Help the community by rating prompts and sharing your experience. Quality feedback makes prompts better for everyone.</p>
+                    <div class="command-line">
+                        <button class="action-btn" onclick="showTopRated()">
+                            <span class="btn-icon">🏆</span>
+                            View Top Rated
+                        </button>
+                    </div>
+                </div>
+                
+
+                    </div>
+        </section>
+        
+        <!-- Attribution Section -->
+        <section class="attribution-section">
+            <div class="attribution-container">
+                <p class="attribution-text">
+                    Modified by <strong>Bilal Arshad</strong> based on [<a href="https://github.com/davila7/claude-code-templates" target="_blank" rel="noopener noreferrer" class="attribution-link">
+                        @davila7/claude-code-templates
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 4px;">
+                            <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/>
+                        </svg>
+                    </a>]
+                </p>
+            </div>
+        </section>
+    </main>
+
+
+
+    <!-- Prompt Submission Modal -->
+    <div id="submitModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Submit a New Prompt</h3>
+                <button class="modal-close" onclick="closeSubmitModal()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+                        </svg>
+                    </button>
+                </div>
+            <div class="modal-body">
+                <form id="promptSubmissionForm">
+                    <div class="form-group">
+                        <label for="promptTitle">Title</label>
+                        <input type="text" id="promptTitle" placeholder="Brief description of what this prompt does">
+                    </div>
+                    <div class="form-group">
+                        <label for="promptCategory">Category</label>
+                        <select id="promptCategory">
+                            <option value="debugging">Debugging</option>
+                            <option value="testing">Testing</option>
+                            <option value="optimization">Performance</option>
+                            <option value="refactoring">Refactoring</option>
+                            <option value="documentation">Documentation</option>
+                            <option value="security">Security</option>
+                            <option value="frontend">Frontend</option>
+                            <option value="devops">DevOps</option>
+                            <option value="backend">Backend</option>
+                            <option value="mobile">Mobile</option>
+                            <option value="ai-ml">AI & ML</option>
+                            <option value="database">Database</option>
+                            <option value="api">API Design</option>
+                            <option value="cloud">Cloud</option>
+                            <option value="blockchain">Blockchain</option>
+                            <option value="game-dev">Game Development</option>
+                            <option value="data-viz">Data Visualization</option>
+                            <option value="automation">Automation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="promptLanguage">Programming Language</label>
+                        <select id="promptLanguage">
+                            <option value="general">General</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="typescript">TypeScript</option>
+                            <option value="python">Python</option>
+                            <option value="java">Java</option>
+                            <option value="csharp">C#</option>
+                            <option value="cpp">C++</option>
+                            <option value="go">Go</option>
+                            <option value="rust">Rust</option>
+                            <option value="php">PHP</option>
+                            <option value="ruby">Ruby</option>
+                            <option value="swift">Swift</option>
+                            <option value="kotlin">Kotlin</option>
+                            <option value="sql">SQL</option>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                            <option value="dockerfile">Dockerfile</option>
+                            <option value="markdown">Markdown</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="promptText">Prompt Text</label>
+                        <textarea id="promptText" rows="8" placeholder="Enter your effective coding prompt here..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="promptDescription">Description & Use Case</label>
+                        <textarea id="promptDescription" rows="3" placeholder="Explain when and how to use this prompt effectively..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="promptTags">Tags (comma-separated)</label>
+                        <input type="text" id="promptTags" name="promptTags" placeholder="debugging, react, javascript, frontend" />
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" onclick="closeSubmitModal()" class="btn-secondary">Cancel</button>
+                        <button type="submit" class="btn-primary">Submit Prompt</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="css/workflows-modal.css">
+    <link rel="stylesheet" href="css/stack-page.css">
+    <link rel="stylesheet" href="css/prompt-hub.css">
+    <script src="js/utils.js"></script>
+    <script src="js/modal-helpers.js"></script>
+    <script src="js/prompt-hub.js"></script>
+</body>
+</html>
