@@ -129,7 +129,7 @@ async function createPrompt(promptData) {
   try {
     const query = `
       INSERT INTO prompts (
-        title, description, prompt_text, category_id, language, tags
+        title, description, prompt_text, category, language, tags
       ) VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING *
     `;
@@ -138,7 +138,7 @@ async function createPrompt(promptData) {
       promptData.title,
       promptData.description,
       promptData.prompt_text,
-      promptData.category_id,
+      promptData.category,
       promptData.language,
       promptData.tags
     ]);
