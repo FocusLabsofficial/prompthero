@@ -452,24 +452,6 @@ function showToast(message, type = 'info') {
     }, 3000);
 }
 
-// Initialize prompt submission functionality
-function initializePromptSubmission() {
-    const form = document.getElementById('promptSubmissionForm');
-    if (form) {
-        form.addEventListener('submit', handlePromptSubmission);
-    }
-    
-    // Close modal when clicking outside
-    const modal = document.getElementById('submitModal');
-    if (modal) {
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeSubmitModal();
-            }
-        });
-    }
-}
-
 // Handle prompt submission
 async function handlePromptSubmission(event) {
     event.preventDefault();
@@ -547,6 +529,45 @@ function initializeTheme() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-theme');
+    }
+}
+
+// Modal functions for prompt submission
+function openSubmitModal() {
+    const modal = document.getElementById('submitModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        // Focus on first input
+        const firstInput = modal.querySelector('input, textarea');
+        if (firstInput) firstInput.focus();
+    }
+}
+
+function closeSubmitModal() {
+    const modal = document.getElementById('submitModal');
+    if (modal) {
+        modal.style.display = 'none';
+        // Reset form
+        const form = document.getElementById('promptSubmissionForm');
+        if (form) form.reset();
+    }
+}
+
+// Initialize prompt submission functionality
+function initializePromptSubmission() {
+    const form = document.getElementById('promptSubmissionForm');
+    if (form) {
+        form.addEventListener('submit', handlePromptSubmission);
+    }
+    
+    // Close modal when clicking outside
+    const modal = document.getElementById('submitModal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeSubmitModal();
+            }
+        });
     }
 }
 
