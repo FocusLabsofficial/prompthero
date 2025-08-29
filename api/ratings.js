@@ -1,5 +1,5 @@
-// CodePrompt Hub - Ratings API
-const { sql } = require('@vercel/postgres');
+// CodePrompt Hub - Ratings API (ESM)
+import { sql } from '@vercel/postgres';
 
 // Handle rating operations for prompts
 export default async function handler(request, response) {

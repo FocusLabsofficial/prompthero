@@ -1,5 +1,7 @@
-// PromptHero - Prompts API
-const { getPrompts, createPrompt, getCategories } = require('../database/db');
+// PromptHero - Prompts API (ESM)
+import db from '../database/db.js';
+
+const { getPrompts, createPrompt, getCategories, pool } = db;
 
 export default async function handler(req, res) {
   // Enable CORS
@@ -57,16 +59,35 @@ export default async function handler(req, res) {
     } else if (req.method === 'POST') {
       // Create new prompt
       const promptData = req.body;
-      
+
+      // Accept either category_id or category_slug
+      let categoryId = promptData.category_id;
+      if (!categoryId && promptData.category_slug) {
+        try {
+          const result = await pool.query(
+            'SELECT id FROM categories WHERE slug = $1 LIMIT 1',
+            [promptData.category_slug]
+          );
+          if (result.rows.length > 0) {
+            categoryId = result.rows[0].id;
+          }
+        } catch (e) {
+          // fall through to validation error below
+        }
+      }
+
       // Validate required fields
-      if (!promptData.title || !promptData.prompt_text || !promptData.category_id) {
+      if (!promptData.title || !promptData.prompt_text || !categoryId) {
         return res.status(400).json({ 
-          error: 'Missing required fields: title, prompt_text, category_id' 
+          error: 'Missing required fields: title, prompt_text, and category (id or slug)'
         });
       }
-      
-      const newPrompt = await createPrompt(promptData);
-      
+
+      const newPrompt = await createPrompt({
+        ...promptData,
+        category_id: categoryId,
+      });
+
       res.status(201).json({ 
         message: 'Prompt created successfully', 
         prompt: newPrompt 
