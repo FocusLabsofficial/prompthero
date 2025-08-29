@@ -1278,10 +1278,8 @@ function handlePromptSubmission(event) {
 
 async function submitPromptDirectly(promptData, submitBtn, originalText) {
     try {
-        // Determine API endpoint based on environment
-        const apiUrl = window.location.hostname === 'localhost' 
-            ? 'http://localhost:3000/api/prompts'
-            : '/api/prompts';
+        // Temporary workaround: hardcode API endpoint to current production deployment
+        const apiUrl = 'https://prompthero-ajhbh1y16-oreoros-projects.vercel.app/api/prompts';
         
         const response = await fetch(apiUrl, {
             method: 'POST',
