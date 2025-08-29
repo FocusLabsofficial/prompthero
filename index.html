@@ -486,11 +486,11 @@
                 <form id="promptSubmissionForm">
                     <div class="form-group">
                         <label for="promptTitle">Title</label>
-                        <input type="text" id="promptTitle" placeholder="Brief description of what this prompt does">
+                        <input type="text" id="promptTitle" name="promptTitle" placeholder="Brief description of what this prompt does" required>
                     </div>
                     <div class="form-group">
                         <label for="promptCategory">Category</label>
-                        <select id="promptCategory">
+                        <select id="promptCategory" name="promptCategory" required>
                             <option value="debugging">Debugging</option>
                             <option value="testing">Testing</option>
                             <option value="optimization">Performance</option>
@@ -513,7 +513,7 @@
                     </div>
                     <div class="form-group">
                         <label for="promptLanguage">Programming Language</label>
-                        <select id="promptLanguage">
+                        <select id="promptLanguage" name="promptLanguage" required>
                             <option value="general">General</option>
                             <option value="javascript">JavaScript</option>
                             <option value="typescript">TypeScript</option>
@@ -536,11 +536,11 @@
                     </div>
                     <div class="form-group">
                         <label for="promptText">Prompt Text</label>
-                        <textarea id="promptText" rows="8" placeholder="Enter your effective coding prompt here..."></textarea>
+                        <textarea id="promptText" name="promptText" rows="8" placeholder="Enter your effective coding prompt here..." required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="promptDescription">Description & Use Case</label>
-                        <textarea id="promptDescription" rows="3" placeholder="Explain when and how to use this prompt effectively..."></textarea>
+                        <textarea id="promptDescription" name="promptDescription" rows="3" placeholder="Explain when and how to use this prompt effectively..." required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="promptTags">Tags (comma-separated)</label>
@@ -558,8 +558,6 @@
     <link rel="stylesheet" href="css/workflows-modal.css">
     <link rel="stylesheet" href="css/stack-page.css">
     <link rel="stylesheet" href="css/prompt-hub.css">
-    <script src="js/utils.js"></script>
-    <script src="js/modal-helpers.js"></script>
     <script src="js/prompt-hub.js"></script>
 </body>
 </html>
