@@ -40,7 +40,6 @@ async function getPrompts(filters = {}) {
         p.rating,
         p.rating_count,
         p.usage_count,
-        p.likes_count,
         p.created_at,
         p.category
       FROM prompts p
