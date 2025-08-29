@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "outputDirectory": "docs",
   "routes": [
     {
       "src": "/api/(.*)",
@@ -7,11 +8,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/docs/$1"
-    },
-    {
-      "src": "/",
-      "dest": "/docs/index.html"
+      "dest": "/$1"
     }
   ],
   "env": {
