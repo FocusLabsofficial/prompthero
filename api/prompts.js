@@ -1,7 +1,7 @@
 // PromptHero - Prompts API (ESM)
 import db from '../database/db.js';
 
-const { getPrompts, createPrompt, getCategories, pool } = db;
+const { getPrompts, createPrompt, pool } = db;
 
 export default async function handler(req, res) {
   // Enable CORS
@@ -38,7 +38,7 @@ export default async function handler(req, res) {
         prompts: prompts.map(prompt => ({
           id: prompt.id,
           title: prompt.title,
-          category: prompt.category_slug,
+          category: prompt.category,
           language: prompt.language,
           prompt_text: prompt.prompt_text,
           description: prompt.description,
@@ -60,32 +60,20 @@ export default async function handler(req, res) {
       // Create new prompt
       const promptData = req.body;
 
-      // Accept either category_id or category_slug
-      let categoryId = promptData.category_id;
-      if (!categoryId && promptData.category_slug) {
-        try {
-          const result = await pool.query(
-            'SELECT id FROM categories WHERE slug = $1 LIMIT 1',
-            [promptData.category_slug]
-          );
-          if (result.rows.length > 0) {
-            categoryId = result.rows[0].id;
-          }
-        } catch (e) {
-          // fall through to validation error below
-        }
-      }
-
       // Validate required fields
-      if (!promptData.title || !promptData.prompt_text || !categoryId) {
+      if (!promptData.title || !promptData.prompt_text || !promptData.category_slug) {
         return res.status(400).json({ 
-          error: 'Missing required fields: title, prompt_text, and category (id or slug)'
+          error: 'Missing required fields: title, prompt_text, and category_slug'
         });
       }
 
       const newPrompt = await createPrompt({
-        ...promptData,
-        category_id: categoryId,
+        title: promptData.title,
+        description: promptData.description || '',
+        prompt_text: promptData.prompt_text,
+        category: promptData.category_slug,
+        language: promptData.language || 'general',
+        tags: promptData.tags || []
       });
 
       res.status(201).json({ 
