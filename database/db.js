@@ -42,12 +42,8 @@ async function getPrompts(filters = {}) {
         p.usage_count,
         p.likes_count,
         p.created_at,
-        c.name as category_name,
-        c.slug as category_slug,
-        c.icon as category_icon,
-        c.color as category_color
+        p.category
       FROM prompts p
-      JOIN categories c ON p.category_id = c.id
       WHERE p.is_approved = true
     `;
     
@@ -57,7 +53,7 @@ async function getPrompts(filters = {}) {
     // Add category filter
     if (filters.category) {
       paramCount++;
-      query += ` AND c.slug = $${paramCount}`;
+      query += ` AND p.category = $${paramCount}`;
       params.push(filters.category);
     }
     
@@ -116,13 +112,8 @@ async function getPromptById(id) {
   try {
     const query = `
       SELECT 
-        p.*,
-        c.name as category_name,
-        c.slug as category_slug,
-        c.icon as category_icon,
-        c.color as category_color
+        p.*
       FROM prompts p
-      JOIN categories c ON p.category_id = c.id
       WHERE p.id = $1 AND p.is_approved = true
     `;
     
