@@ -1120,153 +1120,17 @@ button:active, .header-btn:active {
 
 /* Prompt Hub Styles */
 
-/* Form Styles */
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #333;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    font-family: inherit;
-    transition: border-color 0.2s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-.form-actions {
-    display: flex;
-    gap: 12px;
-    justify-content: flex-end;
-    margin-top: 24px;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 12px 24px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.btn-secondary {
-    background-color: #6c757d;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 12px 24px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.btn-secondary:hover {
-    background-color: #545b62;
-}
-
-/* Modal Styles */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.modal-content {
-    background: white;
-    border-radius: 12px;
-    max-width: 600px;
-    width: 90%;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 24px;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.modal-header h3 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 600;
-    color: #333;
-}
-
-.modal-close {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #6c757d;
-    padding: 4px;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
-}
-
-.modal-close:hover {
-    background-color: #f8f9fa;
-    color: #333;
-}
-
-.modal-body {
-    padding: 24px;
-}
-
 /* Rating Modal Styles */
 .rating-stars {
     display: flex;
     gap: 8px;
     margin-bottom: 16px;
-    justify-content: center;
 }
 
 .rating-stars .star {
-    font-size: 32px;
+    font-size: 24px;
     cursor: pointer;
-    color: #ddd;
+    color: #ccc;
     transition: color 0.2s ease;
 }
 
@@ -1280,18 +1144,16 @@ button:active, .header-btn:active {
 
 #ratingReview {
     width: 100%;
-    padding: 12px;
+    padding: 8px;
     border: 1px solid #ddd;
-    border-radius: 6px;
+    border-radius: 4px;
     margin-bottom: 16px;
     font-family: inherit;
-    resize: vertical;
-    min-height: 80px;
 }
 
 .modal-actions {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     justify-content: flex-end;
 }
 
@@ -1299,20 +1161,16 @@ button:active, .header-btn:active {
 .btn-bookmark, .btn-like {
     background: none;
     border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 8px 12px;
+    border-radius: 4px;
+    padding: 4px 8px;
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 16px;
-    min-width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .btn-bookmark:hover, .btn-like:hover {
-    background-color: #f8f9fa;
-    transform: scale(1.05);
+    background-color: #f5f5f5;
+    transform: scale(1.1);
 }
 
 .btn-bookmark.bookmarked {
@@ -1330,67 +1188,29 @@ button:active, .header-btn:active {
 /* Prompt Card Enhancements */
 .prompt-card {
     border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
     background: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s ease;
 }
 
 .prompt-card:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
-}
-
-.prompt-header {
-    margin-bottom: 12px;
-}
-
-.prompt-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-    margin: 0 0 8px 0;
-}
-
-.prompt-meta {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.prompt-category,
-.prompt-language {
-    background: #f8f9fa;
-    color: #6c757d;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.prompt-description {
-    color: #666;
-    line-height: 1.5;
-    margin-bottom: 16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .prompt-stats {
     display: flex;
     gap: 16px;
-    margin: 16px 0;
+    margin: 12px 0;
     font-size: 14px;
     color: #666;
-    flex-wrap: wrap;
 }
 
 .prompt-stats .rating {
     cursor: pointer;
     transition: color 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 4px;
 }
 
 .prompt-stats .rating:hover {
@@ -1401,29 +1221,22 @@ button:active, .header-btn:active {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    margin-top: 16px;
+    margin-top: 12px;
 }
 
 .btn-copy, .btn-view {
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 6px;
-    padding: 8px 16px;
+    border-radius: 4px;
+    padding: 6px 12px;
     cursor: pointer;
     font-size: 14px;
-    font-weight: 500;
     transition: background-color 0.2s ease;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
 }
 
 .btn-copy:hover, .btn-view:hover {
     background-color: #0056b3;
-    text-decoration: none;
-    color: white;
 }
 
 /* Toast Notifications */
@@ -1433,15 +1246,12 @@ button:active, .header-btn:active {
     right: 20px;
     background: #333;
     color: white;
-    padding: 16px 24px;
-    border-radius: 8px;
-    z-index: 1001;
+    padding: 12px 20px;
+    border-radius: 4px;
+    z-index: 1000;
     opacity: 0;
     transform: translateX(100%);
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    max-width: 400px;
-    font-weight: 500;
 }
 
 .toast.show {
@@ -1450,36 +1260,31 @@ button:active, .header-btn:active {
 }
 
 .toast.success {
-    background: #28a745;
+    background: #4caf50;
 }
 
 .toast.error {
-    background: #dc3545;
+    background: #f44336;
 }
 
 .toast.info {
-    background: #17a2b8;
+    background: #2196f3;
 }
 
 /* Filter Enhancements */
 .filter-chip {
-    background: #f8f9fa;
-    border: 1px solid #dee2e6;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
     border-radius: 20px;
-    padding: 8px 16px;
+    padding: 6px 12px;
     margin: 4px;
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 14px;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
 }
 
 .filter-chip:hover {
-    background: #e9ecef;
-    border-color: #adb5bd;
+    background: #e0e0e0;
 }
 
 .filter-chip.active {
@@ -1489,61 +1294,69 @@ button:active, .header-btn:active {
 }
 
 .filter-chip.special {
-    background: #ffc107;
-    color: #212529;
-    border-color: #ffc107;
+    background: #ff9800;
+    color: white;
+    border-color: #ff9800;
 }
 
-/* Prompt Text Display */
-.prompt-text {
-    margin-top: 16px;
+/* Modal Enhancements */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
-.prompt-text h4 {
-    margin: 0 0 12px 0;
-    color: #333;
-    font-size: 16px;
-    font-weight: 600;
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-header h3 {
+    margin: 0;
+}
+
+.modal-header button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-body {
+    padding: 16px;
 }
 
 .prompt-text pre {
-    background: #f8f9fa;
-    padding: 16px;
-    border-radius: 8px;
+    background: #f5f5f5;
+    padding: 12px;
+    border-radius: 4px;
     overflow-x: auto;
     white-space: pre-wrap;
     word-wrap: break-word;
-    border: 1px solid #e9ecef;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #333;
-}
-
-/* No Results */
-.no-results {
-    text-align: center;
-    padding: 40px 20px;
-    color: #6c757d;
-}
-
-.no-results h3 {
-    margin: 0 0 8px 0;
-    color: #333;
-}
-
-.no-results p {
-    margin: 0;
-    font-size: 16px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .modal-content {
-        width: 95%;
-        margin: 20px;
-        max-height: 95vh;
-    }
-    
     .prompt-actions {
         flex-direction: column;
     }
@@ -1553,65 +1366,8 @@ button:active, .header-btn:active {
         gap: 8px;
     }
     
-    .form-actions {
-        flex-direction: column;
+    .modal-content {
+        width: 95%;
+        margin: 20px;
     }
-    
-    .btn-copy, .btn-view {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .toast {
-        right: 10px;
-        left: 10px;
-        max-width: none;
-    }
-}
-
-/* Dark Theme Support */
-.dark-theme .modal-content {
-    background: #2d3748;
-    color: #e2e8f0;
-}
-
-.dark-theme .modal-header {
-    border-bottom-color: #4a5568;
-}
-
-.dark-theme .form-group input,
-.dark-theme .form-group select,
-.dark-theme .form-group textarea {
-    background: #4a5568;
-    border-color: #718096;
-    color: #e2e8f0;
-}
-
-.dark-theme .prompt-card {
-    background: #2d3748;
-    border-color: #4a5568;
-    color: #e2e8f0;
-}
-
-.dark-theme .prompt-title {
-    color: #e2e8f0;
-}
-
-.dark-theme .prompt-description {
-    color: #a0aec0;
-}
-
-.dark-theme .filter-chip {
-    background: #4a5568;
-    border-color: #718096;
-    color: #e2e8f0;
-}
-
-.dark-theme .filter-chip:hover {
-    background: #718096;
-}
-
-.dark-theme .filter-chip.active {
-    background: #3182ce;
-    border-color: #3182ce;
 }
